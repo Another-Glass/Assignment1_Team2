@@ -1,43 +1,13 @@
 const express = require("express");
 const auth = require("../middleware/auth");
+const page_ctrl = require("../util/paginate.ctrl");
 const paginate = require("express-paginate");
 const router = express.Router();
-
-// model
-const Post = require("../../models/post");
-const User = require("../../models/user");
-const Category = require("../../models/category");
-const Comment = require("../../models/comment");
 
 // @routes     GET /posts
 // @desc       글 목록 확인 [pagination]
 // @access     public
-router.get("/", paginate.middleware(10, 100), (req, res) => {
-  Promise.all([
-    models.Products.findAll({
-      include: [
-        {
-          model: models.User,
-          as: "Owner",
-          attributes: ["username", "displayname"],
-        },
-      ],
-      order: [["createdAt", "desc"]],
-      limit: req.query.limit,
-      offset: req.offset,
-    }),
-    models.Products.count(),
-  ])
-    .then(([products, totalCount]) => {
-      const pageCount = Math.ceil(totalCount / req.query.limit);
-      const pages = paginate.getArrayPages(req)(5, pageCount, req.query.page);
-      res.json({ products, pages, pageCount });
-    })
-    .catch((e) => {
-      console.error(e);
-      res.send("게시글 목록 확인에 문제가 발생 했습니다.");
-    });
-});
+router.get("/", page_ctrl.pagingController);
 
 // @routes     POST /posts/write
 // @desc       글 작성
@@ -50,7 +20,7 @@ router.post("/write", auth, (req, res) => {
   }
   Post.create({ title, content, nickname })
     .then(({ title, content, nickname, id }) => {
-      res.json({
+      res.status(200).json({
         title,
         content,
         nickname,
@@ -69,7 +39,7 @@ router.post("/write", auth, (req, res) => {
 router.get("/detail/:id", (req, res) => {
   Post.findByPk(req.params.id)
     .then(({ title, content, nickname, id }) => {
-      res.json({
+      res.status(200).json({
         title,
         content,
         nickname,
@@ -88,7 +58,7 @@ router.get("/detail/:id", (req, res) => {
 router.delete("/delete/:id", auth, (req, res) => {
   Post.destroy({ where: { id: req.params.id } })
     .then(() => {
-      res.send("게시물 삭제 완료");
+      res.status(200).send("게시물 삭제 완료");
     })
     .catch((e) => {
       console.error(e);
@@ -103,7 +73,7 @@ router.put("/edit/:id", auth, (req, res) => {
   const { title, content, nickname } = req.body;
   Post.update({ title, content, nickname }, { where: { id: req.params.id } })
     .then(() => {
-      res.send("게시물 수정 완료");
+      res.status(200).send("게시물 수정 완료");
     })
     .catch((e) => {
       console.error(e);

@@ -40,7 +40,7 @@ router.post("/signup", (req, res) => {
             { expiresIn: 3600 },
             (err, token) => {
               if (err) throw err;
-              res.json({
+              res.status(200).json({
                 token,
                 user: {
                   id: user.id,
@@ -78,7 +78,7 @@ router.post("/login", (req, res) => {
         { expiresIn: "2 days" },
         (err, token) => {
           if (err) throw err;
-          res.json({
+          res.status(200).json({
             token,
             user: {
               id: user.id,
@@ -89,13 +89,6 @@ router.post("/login", (req, res) => {
       );
     });
   });
-});
-
-// @routes     GET auth/logout
-// @desc       로그아웃
-// @access     user
-router.get("/logout", (req, res) => {
-  res.json("로그아웃 성공");
 });
 
 module.exports = router;
