@@ -40,10 +40,12 @@ const findAllComments = (boardId) => {
         let copy = JSON.parse(JSON.stringify(comments));
 
         copy.forEach((comment, idx, _comments) => {
-          console.log(comment);
+
           findAllNestedComments(comment._id)
             .then((nestedComments) => {
               comment.nestedComments = nestedComments;
+
+
               done.push(comment);
               if (done.length === size) {
                 resolve(copy);
