@@ -18,7 +18,7 @@ const router = express.Router();
 // @routes     GET /posts
 // @desc       페이징 게시글 가져오기
 // @access     public
-router.get("/:page", (req, res) => {
+router.get("/block/:page", (req, res) => {
   const page = req.params.page;
   findPageBoards(page)
     .then((page_block) => {
