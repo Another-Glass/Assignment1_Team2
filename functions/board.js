@@ -132,11 +132,12 @@ const findPageBoards = (page) => {
   ]
 */
 const searchBoards = (type, content) => {
-  let options = [];
-  if (type === "title") options = [{ title: new RegExp(content) }];
-  else if (type === "category") options = [{ category: new RegExp(content) }];
-  else if (type === "autherId") options = [{ autherId: new RegExp(content) }];
   return new Promise((resolve, reject) => {
+    let options = [];
+    if (type === "title") options = [{ title: new RegExp(content) }];
+    else if (type === "category") options = [{ category: new RegExp(content) }];
+    else if (type === "autherId") options = [{ autherId: new RegExp(content) }];
+    else reject(new Error("올바른 type값을 넣어주세요."));
     Board.find({ $or: options })
       .then((boards) => {
         resolve(boards);
