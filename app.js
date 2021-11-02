@@ -1,7 +1,7 @@
 const express = require("express");
 
 
-
+const app = express();
 
 //express 빌트인 body-parser
 app.use(express.json());
