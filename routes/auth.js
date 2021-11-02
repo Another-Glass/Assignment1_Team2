@@ -6,6 +6,8 @@ const router = express.Router();
 // model
 const User = require("../models/User");
 
+const JWT_SECRET = process.env.JWT_SECRET_KEY
+
 // @routes     POST auth/signup
 // @desc       회원가입
 // @access     public
