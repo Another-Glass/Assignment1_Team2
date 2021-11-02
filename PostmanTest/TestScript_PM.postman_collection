@@ -1,109 +1,10 @@
 {
 	"info": {
 		"_postman_id": "754c144d-6b8a-4220-aa6c-9005aef7bddc",
-		"name": "Another-Glass Assign1 Team2",
+		"name": "Another-Glass Assign1 Team2 Working",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "check on",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"check on\",()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{host}}:{{port}}",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}"
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "signup",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\" : \"{{$id}}\",\r\n    \"pw\" : \"{{$pw}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http:/{{host}}:{{port}}/signup",
-					"host": [
-						"http"
-					],
-					"port": "",
-					"path": [
-						"{{host}}:{{port}}",
-						"signup"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "signin",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"signin\",()=>{\r",
-							"    pm.collectionVariables.set(\"cookie\",pm.response.headers.get(\"Set-Cookie\"))\r",
-							"    \r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\" : \"{{id}}\",\r\n    \"pw\" : \"{{pw}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/signin",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"signin"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "post article",
 			"event": [
@@ -113,11 +14,13 @@
 						"exec": [
 							"pm.test(\"article\" + pm.collectionVariables.get(\"titleNum\"), () => {\r",
 							"\r",
+							"    console.log(\"check test\")\r",
+							"\r",
 							"    var previous = pm.collectionVariables.get(\"titleNum\")\r",
 							"\r",
 							"\r",
 							"    //var random = Math.floor(Math.random() * 3)\r",
-							"    var random = 1\r",
+							"    var random = 2\r",
 							"    /*\r",
 							"     * 0 : 아무것도 하지 않음\r",
 							"     * 1 : 나중에 수정대상\r",
@@ -126,48 +29,77 @@
 							"\r",
 							"\r",
 							"    // TODO 이제 여기서 몇가지 경우에 대해 테스트 세분화\r",
-							"\r",
+							"    var host = pm.collectionVariables.get(\"host\")\r",
+							"    var port = pm.collectionVariables.get(\"port\")\r",
 							"    if (random == 0) {\r",
-							"\r",
+							"        finish(previous)\r",
 							"    } else if (random == 1) {\r",
-							"        var host = pm.collectionVariables.get(\"host\")\r",
-							"        var port = pm.collectionVariables.get(\"port\")\r",
+							"        console.log(\"random 1\")\r",
+							"\r",
 							"\r",
 							"\r",
 							"        pm.sendRequest({\r",
 							"            url: `http://${host}:${port}/board`,\r",
 							"            method: `PUT`,\r",
 							"            header: {\r",
+							"                \"Content-Type\": \"application/json\",\r",
 							"                \"Cookie\": pm.collectionVariables.get('cookie')\r",
 							"            },\r",
 							"            body: {\r",
 							"                mode: 'raw',\r",
 							"                raw: JSON.stringify({\r",
-							"                    id: pm.collectionVariables.get(\"id\"),\r",
-							"                    num : JSON.parse(pm.response.body),\r",
-							"                    change: {\r",
-							"                        title: \"modified title\" + previous\r",
+							"                    \"id\": pm.collectionVariables.get(\"id\"),\r",
+							"                    \"num\": 4,\r",
+							"                    \"change\": {\r",
+							"                        \"title\": \"modified title\" + previous\r",
 							"                    }\r",
 							"                })\r",
 							"            }\r",
 							"        }, (err, res) => {\r",
+							"            console.log(\"receive\")\r",
 							"            if (err) {\r",
 							"                console.log(err)\r",
 							"            } else {\r",
 							"                console.log(res)\r",
+							"                finish(previous)\r",
 							"            }\r",
 							"\r",
 							"        })\r",
 							"    } else {\r",
+							"        pm.sendRequest({\r",
+							"            url: `http://${host}:${port}/board?id=${pm.collectionVariables.get(\"id\")}&num=4`,\r",
+							"            method: `DELETE`,\r",
+							"            header: {\r",
+							"                \"Content-Type\": \"application/json\",\r",
+							"                \"Cookie\": pm.collectionVariables.get('cookie')\r",
+							"            },\r",
+							"            body: {\r",
+							"                mode: 'raw',\r",
+							"                raw: JSON.stringify({\r",
+							"                })\r",
+							"            }\r",
+							"        }, (err, res) => {\r",
+							"            console.log(\"receive\")\r",
+							"            if (err) {\r",
+							"                console.log(err)\r",
+							"            } else {\r",
+							"                console.log(res)\r",
+							"                finish(previous)\r",
+							"            }\r",
 							"\r",
+							"        })\r",
 							"    }\r",
 							"\r",
+							"\r",
+							"\r",
+							"})\r",
+							"\r",
+							"function finish(previous) {\r",
 							"    pm.response.to.have.status(201)\r",
 							"\r",
 							"    pm.collectionVariables.set(\"titleNum\", parseInt(previous) + 1)\r",
 							"    pm.collectionVariables.set(\"mainNum\", parseInt(previous) + 1)\r",
-							"\r",
-							"})\r",
+							"}\r",
 							""
 						],
 						"type": "text/javascript"
@@ -177,7 +109,82 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"// TODO checkon, signup, signin 과정 포함시키기"
+							"// TODO checkon, signup, signin 과정 포함시키기\r",
+							"\r",
+							"var host = pm.collectionVariables.get(\"host\")\r",
+							"var port = pm.collectionVariables.get(\"port\")\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url: `http://${host}:${port}`,\r",
+							"    method: `GET`,\r",
+							"}, (err, res) => {\r",
+							"    if (err) {\r",
+							"        console.log(err)\r",
+							"\r",
+							"    } else {\r",
+							"        console.log(\"server is listening\")\r",
+							"        signup()\r",
+							"    }\r",
+							"\r",
+							"})\r",
+							"\r",
+							"function signup() {\r",
+							"\r",
+							"    console.log({\r",
+							"                \"id\": pm.collectionVariables.get(\"id\"),\r",
+							"                \"pw\": pm.collectionVariables.get(\"pw\")\r",
+							"            })\r",
+							"    pm.sendRequest({\r",
+							"        url: `http://${host}:${port}/signup`,\r",
+							"        method: `POST`,\r",
+							"        header:{\r",
+							"            \"Content-Type\" : \"application/json\"\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                \"id\": pm.collectionVariables.get(\"id\"),\r",
+							"                \"pw\": pm.collectionVariables.get(\"pw\")\r",
+							"            })\r",
+							"        }\r",
+							"    }, (err, res) => {\r",
+							"        if (err) {\r",
+							"            console.log(err)\r",
+							"        } else {\r",
+							"            \r",
+							"            console.log(res)\r",
+							"            signin()\r",
+							"        }\r",
+							"\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"\r",
+							"function signin() {\r",
+							"    pm.sendRequest({\r",
+							"        url: `http://${host}:${port}/signin`,\r",
+							"        method: `POST`,\r",
+							"        header:{\r",
+							"            \"Content-Type\" : \"application/json\"\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                \"id\": pm.collectionVariables.get(\"id\"),\r",
+							"                \"pw\": pm.collectionVariables.get(\"pw\")\r",
+							"            })\r",
+							"        }\r",
+							"    }, (err, res) => {\r",
+							"        if (err) {\r",
+							"            console.log(err)\r",
+							"        } else {\r",
+							"            pm.collectionVariables.set(\"cookie\",res.headers.get(\"Set-Cookie\"))\r",
+							"            console.log(\"signin success\")\r",
+							"        }\r",
+							"\r",
+							"    })\r",
+							"}\r",
+							""
 						],
 						"type": "text/javascript"
 					}
