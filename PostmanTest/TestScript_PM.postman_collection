@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "754c144d-6b8a-4220-aa6c-9005aef7bddc",
+		"name": "Another-Glass Assign1 Team2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "check on",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check on\",()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"{{$id}}\",\r\n    \"pw\" : \"{{$pw}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http:/{{host}}:{{port}}/signup",
+					"host": [
+						"http"
+					],
+					"port": "",
+					"path": [
+						"{{host}}:{{port}}",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"signin\",()=>{\r",
+							"    pm.collectionVariables.set(\"cookie\",pm.response.headers.get(\"Set-Cookie\"))\r",
+							"    \r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"{{id}}\",\r\n    \"pw\" : \"{{pw}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/signin",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post article",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"article\" + pm.collectionVariables.get(\"titleNum\"), () => {\r",
+							"\r",
+							"    var previous = pm.collectionVariables.get(\"titleNum\")\r",
+							"\r",
+							"\r",
+							"    //var random = Math.floor(Math.random() * 3)\r",
+							"    var random = 1\r",
+							"    /*\r",
+							"     * 0 : 아무것도 하지 않음\r",
+							"     * 1 : 나중에 수정대상\r",
+							"     * 2 : 나중에 삭제대상\r",
+							"     */\r",
+							"\r",
+							"\r",
+							"    // TODO 이제 여기서 몇가지 경우에 대해 테스트 세분화\r",
+							"\r",
+							"    if (random == 0) {\r",
+							"\r",
+							"    } else if (random == 1) {\r",
+							"        var host = pm.collectionVariables.get(\"host\")\r",
+							"        var port = pm.collectionVariables.get(\"port\")\r",
+							"\r",
+							"\r",
+							"        pm.sendRequest({\r",
+							"            url: `http://${host}:${port}/board`,\r",
+							"            method: `PUT`,\r",
+							"            header: {\r",
+							"                \"Cookie\": pm.collectionVariables.get('cookie')\r",
+							"            },\r",
+							"            body: {\r",
+							"                mode: 'raw',\r",
+							"                raw: JSON.stringify({\r",
+							"                    id: pm.collectionVariables.get(\"id\"),\r",
+							"                    num : JSON.parse(pm.response.body),\r",
+							"                    change: {\r",
+							"                        title: \"modified title\" + previous\r",
+							"                    }\r",
+							"                })\r",
+							"            }\r",
+							"        }, (err, res) => {\r",
+							"            if (err) {\r",
+							"                console.log(err)\r",
+							"            } else {\r",
+							"                console.log(res)\r",
+							"            }\r",
+							"\r",
+							"        })\r",
+							"    } else {\r",
+							"\r",
+							"    }\r",
+							"\r",
+							"    pm.response.to.have.status(201)\r",
+							"\r",
+							"    pm.collectionVariables.set(\"titleNum\", parseInt(previous) + 1)\r",
+							"    pm.collectionVariables.set(\"mainNum\", parseInt(previous) + 1)\r",
+							"\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// TODO checkon, signup, signin 과정 포함시키기"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "{{cookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"{{id}}\",\r\n    \"title\" : \"title{{titleNum}}\",\r\n    \"head\" : \"head{{headNum}}\",\r\n    \"main\" : \"main{{mainNum}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/board",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"board"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get articles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "{{cookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"{{id}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/board",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"board"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "testID"
+		},
+		{
+			"key": "pw",
+			"value": "testPW"
+		},
+		{
+			"key": "titleNum",
+			"value": "001"
+		},
+		{
+			"key": "headNum",
+			"value": "01"
+		},
+		{
+			"key": "mainNum",
+			"value": "001"
+		},
+		{
+			"key": "cookie",
+			"value": ""
+		},
+		{
+			"key": "host",
+			"value": "34.64.95.44"
+		},
+		{
+			"key": "port",
+			"value": "8000"
+		}
+	]
+}
