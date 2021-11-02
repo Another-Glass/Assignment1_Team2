@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "author": "kim",
   "license": "MIT",
@@ -15,5 +16,8 @@
     "express": "^4.17.1",
     "jsonwebtoken": "8.5.1",
     "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
   }
 }

@@ -17,8 +17,8 @@ mongoose.connect(
       .limit(1)
       .then((boards) => {
         setLastPostId(boards[0].postId ?? 0);
-        app.listen(port, () => {
-          console.log(`${port} 서버가 잘 돌아가고 있습니다.`);
+        app.listen(PORT, () => {
+          console.log(`${PORT} 서버가 잘 돌아가고 있습니다.`);
         });
       })
       .catch((err) => {
