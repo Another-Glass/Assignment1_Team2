@@ -1,9 +1,9 @@
 const Comment = require("../models/Comment");
 
-/*
-  모든 댓글과 대댓글 불러오기
-  @param : 게시글Id String
-  @return : 검색된 댓글과 대댓글들 정보 Array<Object>
+/**
+  * 모든 댓글과 대댓글 불러오기
+  * @param : 게시글Id String
+  * @return : 검색된 댓글과 대댓글들 정보 Array<Object>
   [
     {
       _id,
@@ -43,7 +43,6 @@ const findAllComments = (boardId) => {
             .then((nestedComments) => {
               _comments.nestedComments = nestedComments;
               done.push(comment);
-              console.log(`${done.length} / ${size}`);
               if (done.length === size) {
                 resolve(_comments);
               }
@@ -75,16 +74,16 @@ const findAllNestedComments = (commentId) => {
   });
 };
 
-/*
-  댓글 및 대댓글 생성
-  @param : 작성한 댓글 or 대댓글 정보 Object
+/**
+  * 댓글 및 대댓글 생성
+  * @param : 작성한 댓글 or 대댓글 정보 Object
   {
     parentType,
     parentId,
     userId,
     content,
   }
-  @return : 생성한 댓글 or대댓글 정보 Object
+  * @return : 생성한 댓글 or대댓글 정보 Object
   {
     _id,
     parentType,
@@ -110,9 +109,9 @@ const createComment = (body) => {
   });
 };
 
-/*
-  댓글 및 대댓글 수정
-  @param : 댓글Id or 대댓글Id String, 수정한 댓글 or 대댓글 정보 Object
+/**
+  * 댓글 및 대댓글 수정
+  * @param : 댓글Id or 대댓글Id String, 수정한 댓글 or 대댓글 정보 Object
   commentId,
   {
     parentType,
@@ -120,7 +119,7 @@ const createComment = (body) => {
     userId,
     content,
   }
-  @return : 수정된 댓글 or대댓글 정보 Object
+  * @return : 수정된 댓글 or대댓글 정보 Object
   {
     _id,
     parentType,
@@ -150,11 +149,11 @@ const updateComment = (commentId, body) => {
   });
 };
 
-/*
-  댓글 및 대댓글 삭제
-  @param : 댓글Id or 대댓글Id String
-  @return : 삭제된 댓글Id or 대댓글Id String
-*/
+/**
+ * 댓글 및 대댓글 삭제
+ * @param : 댓글Id or 대댓글Id String
+ * @return : 삭제된 댓글Id or 대댓글Id String
+ */
 const deleteComment = (commentId) => {
   return new Promise((resolve, reject) => {
     Comment.findByIdAndDelete(commentId)

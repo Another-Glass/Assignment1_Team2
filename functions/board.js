@@ -32,9 +32,9 @@ const updateCount = (userId, boardId, board) => {
   });
 };
 
-/*
-  모든 게시글 가져오기
-  @return : 게시글들 전체 정보 Array<Object>
+/**
+  * 모든 게시글 가져오기
+  * @return : 게시글들 전체 정보 Array<Object>
   [
     {
       _id,
@@ -64,10 +64,10 @@ const findAllBoards = () => {
   });
 };
 
-/*
-  게시글 검색하기
-  @param : 검색필터종류 String, 검색내용 String
-  @return : 검색된 게시글들 정보 Array<Object>
+/**
+  * 게시글 검색하기
+  * @param : 검색필터종류 String, 검색내용 String
+  * @return : 검색된 게시글들 정보 Array<Object>
   [
     {
       _id,
@@ -101,10 +101,10 @@ const searchBoards = (type, content) => {
   });
 };
 
-/*
-  특정 게시글 하나 가져오기
-  @param : 현재유저ID String, 게시글ID String
-  @return : 특정 게시글 정보 Object
+/**
+  * 특정 게시글 하나 가져오기
+  * @param : 현재유저ID String, 게시글ID String
+  * @return : 특정 게시글 정보 Object
   {
     _id,
     autherId,
@@ -134,16 +134,16 @@ const findOneBoard = (userId, boardId) => {
   });
 };
 
-/*
-  게시글 생성하기
-  @param : 작성한 게시글 정보 Object
+/**
+  * 게시글 생성하기
+  * @param : 작성한 게시글 정보 Object
   {
     autherId,
     title,
     category,
     content,
   }
-  @return : 생성된 게시글 정보 Object
+  * @return : 생성된 게시글 정보 Object
   {
     _id,
     autherId,
@@ -169,9 +169,9 @@ const createBoard = (body) => {
   });
 };
 
-/*
-  게시글 수정하기
-  @param : 게시글Id String, 수정한 게시글 정보 Object
+/**
+  * 게시글 수정하기
+  * @param : 게시글Id String, 수정한 게시글 정보 Object
   boardId,
   {
     autherId,
@@ -179,7 +179,7 @@ const createBoard = (body) => {
     category,
     content,
   }
-  @return : 수정된 게시글 정보 Object
+  * @return : 수정된 게시글 정보 Object
   {
     _id,
     autherId,
@@ -209,11 +209,11 @@ const updateBoard = (boardId, body) => {
   });
 };
 
-/*
-  게시글 삭제하기
-  @param : 게시글Id String
-  @return : 삭제된 게시글Id String
-*/
+/**
+ * 게시글 삭제하기
+ * @param : 게시글Id String
+ * @return : 삭제된 게시글Id String
+ */
 const deleteBoard = (boardId) => {
   return new Promise((resolve, reject) => {
     Board.findByIdAndDelete(boardId)
