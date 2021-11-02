@@ -7,7 +7,7 @@ const router = express.Router();
 const JWT_SECRET = "wanted";
 
 // model
-const User = require("../../models/user");
+const User = require("../models/User");
 
 // @routes     POST auth/signup
 // @desc       회원가입

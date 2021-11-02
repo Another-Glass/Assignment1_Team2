@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const BoardSchema = new mongoose.Schema(
   {
+    postId: {
+      type: Number,
+      default: 0,
+    },
     autherId: {
       type: String,
       required: true,

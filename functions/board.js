@@ -277,6 +277,27 @@ const deleteBoard = (boardId) => {
   });
 };
 
+let lastPostId;
+
+const setLastPostId = (postId) => {
+  lastPostId = postId;
+};
+
+const findPageBoards = (page) => {
+  return new Promise((resolve, reject) => {
+    let border = lastPostId - page * 10;
+    Board.find({ postId: { $lte: border } })
+      .sort({ createdAt: -1 })
+      .limit(10)
+      .then((boards) => {
+        resolve(boards);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 module.exports = {
   findAllBoards,
   findOneBoard,
