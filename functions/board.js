@@ -1,6 +1,12 @@
 const Board = require("../models/Board");
 const Count = require("../models/Count");
 
+let lastPostId;
+
+const setLastPostId = (postId) => {
+  lastPostId = postId;
+};
+
 /*
   게시글 조회 시 count 증가
   같은 User가 게시글을 읽는 경우 count 수 그대로 유지
@@ -39,6 +45,7 @@ const updateCount = (userId, boardId, board) => {
     {
       _id,
       autherId,
+      postId,
       title,
       category,
       content,
@@ -55,6 +62,44 @@ const updateCount = (userId, boardId, board) => {
 const findAllBoards = () => {
   return new Promise((resolve, reject) => {
     Board.find({})
+      .sort({ createdAt: -1 })
+      .then((boards) => {
+        resolve(boards);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+/**
+ * 페이지네이션하여 게시글 가져오기
+ * @param : 페이지 넘버 Number 
+ * @returns : 해당 페이지 게시글들 정보 Array<Object>
+ * [
+    {
+      _id,
+      autherId,
+      postId,
+      title,
+      category,
+      content,
+      count,
+      createdAt,
+      updatedAt,
+    },
+    {
+      ...
+    }
+    ...
+  ]
+ */
+const findPageBoards = (page) => {
+  return new Promise((resolve, reject) => {
+    let border = lastPostId - page * 10;
+    Board.find({ postId: { $lte: border } })
+      .sort({ createdAt: -1 })
+      .limit(10)
       .then((boards) => {
         resolve(boards);
       })
@@ -72,6 +117,7 @@ const findAllBoards = () => {
     {
       _id,
       autherId,
+      postId,
       title,
       category,
       content,
@@ -108,6 +154,7 @@ const searchBoards = (type, content) => {
   {
     _id,
     autherId,
+    postId,
     title,
     category,
     content,
@@ -147,6 +194,7 @@ const findOneBoard = (userId, boardId) => {
   {
     _id,
     autherId,
+    postId,
     title,
     category,
     content,
@@ -176,6 +224,7 @@ const createBoard = (body) => {
   boardId,
   {
     autherId,
+    postId,
     title,
     category,
     content,
@@ -184,6 +233,7 @@ const createBoard = (body) => {
   {
     _id,
     autherId,
+    postId,
     title,
     category,
     content,
@@ -255,6 +305,6 @@ module.exports = {
   createBoard,
   updateBoard,
   deleteBoard,
-  findPageBoards,
   setLastPostId,
+  findPageBoards,
 };

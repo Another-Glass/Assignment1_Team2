@@ -10,6 +10,10 @@ const BoardSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    postId: {
+      type: Number,
+      default: 0,
+    },
     title: {
       type: String,
       max: 50,
@@ -32,6 +36,10 @@ const BoardSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-BoardSchema.index({ title: "text", category: "text", autherId: "text" });
+BoardSchema.index({
+  title: "text",
+  category: "text",
+  autherId: "text",
+});
 
 module.exports = mongoose.model("Board", BoardSchema);
