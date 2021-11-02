@@ -1,21 +1,24 @@
 const express = require("express");
-const auth = require("../middleware/auth");
+const {
+  verifyTokenAndAuthorization,
+  verifyToken,
+} = require("../middleware/auth");
 const router = express.Router();
+const {
+  findAllComments,
+  createComment,
+  updateComment,
+  deleteComment,
+} = require("../functions/comment");
 
-//model
-const Comment = require("../models/Comment");
-
-// @routes     POST /comment/write
-// @desc       댓글 작성
+// @routes     GET /comment/detail
+// @desc       댓글 목록 확인
 // @access     user
-router.post("/write", auth, (req, res) => {
-  const { content } = req.body;
-
-  Comment.create({ content })
-    .then(({ content }) => {
-      res.status(200).json({
-        content,
-      });
+router.get("/detail/:id", (req, res) => {
+  const boardId = req.params.id;
+  findAllComments(boardId)
+    .then((comment) => {
+      res.status(200).json({ comment });
     })
     .catch((e) => {
       console.error(e);
@@ -25,14 +28,16 @@ router.post("/write", auth, (req, res) => {
     });
 });
 
-// @routes     GET /comment/detail/:id
-// @desc       댓글 확인
-// @access     public
-router.get("/detail/:id", (req, res) => {
-  Post.findByPk(req.params.id)
-    .then(({ content }) => {
+// @routes     POST /comment/write/:id
+// @desc       댓글 작성
+// @access     user
+router.post("/write", verifyToken, (req, res) => {
+  const body = req.body;
+  body.userId = req.user.id;
+  createComment(body)
+    .then((comment) => {
       res.status(200).json({
-        content,
+        comment,
       });
     })
     .catch((e) => {
@@ -46,8 +51,9 @@ router.get("/detail/:id", (req, res) => {
 // @routes     DELETE /comment/write
 // @desc       댓글 삭제
 // @access     user
-router.delete("/delete/:id", auth, (req, res) => {
-  Post.destroy({ where: { id: req.params.id } })
+router.delete("/delete/:id", verifyTokenAndAuthorization, (req, res) => {
+  const commentId = req.params.id;
+  deleteComment(commentId)
     .then(() => {
       res.status(200).send("게시물 삭제 완료");
     })
@@ -62,9 +68,10 @@ router.delete("/delete/:id", auth, (req, res) => {
 // @routes     GET /comment/edit/:id
 // @desc       댓글 수정
 // @access     user
-router.put("/edit/:id", auth, (req, res) => {
-  const { content } = req.body;
-  Post.updateOne({ content }, { where: { id: req.params.id } })
+router.put("/edit/:id", verifyTokenAndAuthorization, (req, res) => {
+  const body = req.body;
+  const commentId = req.params.id;
+  updateComment(commentId, body)
     .then(() => {
       res.status(200).send("게시물 수정 완료");
     })

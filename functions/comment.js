@@ -37,14 +37,16 @@ const findAllComments = (boardId) => {
       .then((comments) => {
         let size = comments.length;
         let done = [];
+        let copy = JSON.parse(JSON.stringify(comments));
 
-        comments.forEach((comment, _, _comments) => {
+        copy.forEach((comment, idx, _comments) => {
           findAllNestedComments(comment._id)
             .then((nestedComments) => {
-              _comments.nestedComments = nestedComments;
+              comment.nestedComments = nestedComments;
+
               done.push(comment);
               if (done.length === size) {
-                resolve(_comments);
+                resolve(copy);
               }
             })
             .catch((err) => {

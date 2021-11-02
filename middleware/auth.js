@@ -1,21 +1,37 @@
 const jwt = require("jsonwebtoken");
-// jwt secret key
-const JWT_SECRET = "wanted";
+const dotenv = require("dotenv");
 
-const auth = (req, res, next) => {
-  const token = req.header("x-auth-token");
+dotenv.config();
 
-  if (!token) {
-    return res.status(401).json({ msg: "토큰 없음. 인증이 거부됨!!!" });
-  }
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (e) {
-    console.log(e);
-    res.status(400).json({ msg: "토큰이 유효하지 않습니다" });
+const JWT_SECRET_KEY = "wanted";
+
+const verifyToken = (req, res, next) => {
+  const token = req.headers.token;
+  if (token) {
+    jwt.verify(token, JWT_SECRET_KEY, (err, user) => {
+      if (err) {
+        res.status(403).json({ message: "Token is not valid!" });
+      } else {
+        req.user = user;
+        next();
+      }
+    });
+  } else {
+    res.status(401).json({ message: "You are not authenticated!" });
   }
 };
 
-module.exports = auth;
+const verifyTokenAndAuthorization = (req, res, next) => {
+  verifyToken(req, res, () => {
+    if (req.user.id === req.body.UserId) {
+      next();
+    } else {
+      res.status(403).json({ message: "You are not allowed to do that!" });
+    }
+  });
+};
+
+module.exports = {
+  verifyToken,
+  verifyTokenAndAuthorization,
+};
