@@ -278,11 +278,7 @@ const deleteBoard = (boardId) => {
   });
 };
 
-let lastPostId;
 
-const setLastPostId = (postId) => {
-  lastPostId = postId;
-};
 
 const findPageBoards = (page) => {
   return new Promise((resolve, reject) => {
