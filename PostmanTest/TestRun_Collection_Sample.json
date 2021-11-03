@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "754c144d-6b8a-4220-aa6c-9005aef7bddc",
+		"name": "TestRun",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post article",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"article\" + pm.collectionVariables.get(\"titleNum\"), () => {\r",
+							"\r",
+							"    console.log(\"check test\")\r",
+							"\r",
+							"\r",
+							"    var body = JSON.parse(pm.response.stream)\r",
+							"\r",
+							"    var currnetPostId = body.post.postId\r",
+							"    var currentPostObjId = body.post._id\r",
+							"\r",
+							"\r",
+							"    var previous = pm.collectionVariables.get(\"titleNum\")\r",
+							"\r",
+							"\r",
+							"    var random = Math.floor(Math.random() * 4)\r",
+							"\r",
+							"\r",
+							"    // var random = 2\r",
+							"    /*\r",
+							"     * 0 : 아무것도 하지 않음\r",
+							"     * 1 : 나중에 수정대상\r",
+							"     * 2 : 나중에 삭제대상\r",
+							"     * 3 : 댓글 작성\r",
+							"     *  */\r",
+							"\r",
+							"    // TODO 이제 여기서 몇가지 경우에 대해 테스트 세분화\r",
+							"    var host = pm.collectionVariables.get(\"host\")\r",
+							"    var port = pm.collectionVariables.get(\"port\")\r",
+							"    if (random == 0) {\r",
+							"        finish(previous)\r",
+							"    } else if (random == 1) {\r",
+							"\r",
+							"        pm.sendRequest({\r",
+							"            url: `http://${host}:${port}/posts/edit/${currentPostObjId}`,\r",
+							"            method: `PUT`,\r",
+							"            header: {\r",
+							"                \"Content-Type\": \"application/json\",\r",
+							"                \"token\": pm.collectionVariables.get('token')\r",
+							"            },\r",
+							"            body: {\r",
+							"                mode: 'raw',\r",
+							"                raw: JSON.stringify({\r",
+							"                    \"title\": `modifiedTitle${previous}`,\r",
+							"                    \"category\": \"wecode\",\r",
+							"                    \"content\": `modifiedContent${previous}`,\r",
+							"                    \"UserId\": pm.collectionVariables.get(\"userObjId\")\r",
+							"                })\r",
+							"            }\r",
+							"        }, (err, res) => {\r",
+							"            console.log(\"receive\")\r",
+							"            if (err) {\r",
+							"                console.log(err)\r",
+							"            } else {\r",
+							"                console.log(res)\r",
+							"                finish(previous)\r",
+							"            }\r",
+							"\r",
+							"        })\r",
+							"    } else if (random == 2) {\r",
+							"        pm.sendRequest({\r",
+							"            url: `http://${host}:${port}/posts/delete/${currentPostObjId}`,\r",
+							"            method: `DELETE`,\r",
+							"            header: {\r",
+							"                \"Content-Type\": \"application/json\",\r",
+							"                \"token\": pm.collectionVariables.get('token')\r",
+							"            },\r",
+							"            body: {\r",
+							"                mode: 'raw',\r",
+							"                raw: JSON.stringify({\r",
+							"                    \"UserId\": pm.collectionVariables.get(\"userObjId\")\r",
+							"                })\r",
+							"            }\r",
+							"        }, (err, res) => {\r",
+							"            console.log(\"receive\")\r",
+							"            if (err) {\r",
+							"                console.log(err)\r",
+							"            } else {\r",
+							"                console.log(res)\r",
+							"                finish(previous)\r",
+							"            }\r",
+							"\r",
+							"        })\r",
+							"    } else {\r",
+							"        pm.sendRequest({\r",
+							"            url: `http://${host}:${port}/comment/write`,\r",
+							"            method: `POST`,\r",
+							"            header: {\r",
+							"                \"Content-Type\": \"application/json\",\r",
+							"                \"token\": pm.collectionVariables.get('token')\r",
+							"            },\r",
+							"            body: {\r",
+							"                mode: 'raw',\r",
+							"                raw: JSON.stringify({\r",
+							"                    \"parentType\": \"board\",\r",
+							"                    \"parentId\": `${currentPostObjId}`,\r",
+							"                    \"content\": `comment${previous}`,\r",
+							"                    \"UserId\": pm.collectionVariables.get(\"userObjId\")\r",
+							"                })\r",
+							"            }\r",
+							"        }, (err, res) => {\r",
+							"            console.log(\"receive\")\r",
+							"            if (err) {\r",
+							"                console.log(err)\r",
+							"            } else {\r",
+							"                console.log(res)\r",
+							"                finish(previous)\r",
+							"            }\r",
+							"\r",
+							"        })\r",
+							"    }\r",
+							"\r",
+							"\r",
+							"\r",
+							"})\r",
+							"\r",
+							"function finish(previous) {\r",
+							"    pm.response.to.have.status(200)\r",
+							"\r",
+							"    console.log(\"cycle done\")\r",
+							"    console.log(`titleNum - ${previous}`)\r",
+							"    console.log(`userNum - ${pm.collectionVariables.get(\"userNum\")}`)\r",
+							"\r",
+							"    var newUserNum = parseInt(pm.collectionVariables.get(\"userNum\")) + 1\r",
+							"\r",
+							"    pm.collectionVariables.set(\"titleNum\", parseInt(previous) + 1)\r",
+							"    pm.collectionVariables.set(\"mainNum\", parseInt(previous) + 1)\r",
+							"    pm.collectionVariables.set(\"userNum\", (newUserNum >= 10) ? 0 : newUserNum)\r",
+							"\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var host = pm.collectionVariables.get(\"host\")\r",
+							"var port = pm.collectionVariables.get(\"port\")\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url: `http://${host}:${port}`,\r",
+							"    method: `GET`,\r",
+							"}, (err, res) => {\r",
+							"    if (err) {\r",
+							"        console.log(err)\r",
+							"\r",
+							"    } else {\r",
+							"        console.log(\"server is listening\")\r",
+							"        signup()\r",
+							"    }\r",
+							"\r",
+							"})\r",
+							"\r",
+							"function signup() {\r",
+							"\r",
+							"    console.log({\r",
+							"        \"email\": pm.collectionVariables.get(\"id\"),\r",
+							"        \"password\": pm.collectionVariables.get(\"pw\")\r",
+							"    })\r",
+							"    pm.sendRequest({\r",
+							"        url: `http://${host}:${port}/auth/signup`,\r",
+							"        method: `POST`,\r",
+							"        header: {\r",
+							"            \"Content-Type\": \"application/json\"\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                \"email\": `${pm.collectionVariables.get(\"id\")}${pm.collectionVariables.get(\"userNum\")}`,\r",
+							"                \"password\": `${pm.collectionVariables.get(\"pw\")}${pm.collectionVariables.get(\"userNum\")}`\r",
+							"            })\r",
+							"        }\r",
+							"    }, (err, res) => {\r",
+							"        if (err) {\r",
+							"            console.log(err)\r",
+							"        } else {\r",
+							"\r",
+							"            console.log(res)\r",
+							"            signin()\r",
+							"        }\r",
+							"\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"\r",
+							"function signin() {\r",
+							"    pm.sendRequest({\r",
+							"        url: `http://${host}:${port}/auth/login`,\r",
+							"        method: `POST`,\r",
+							"        header: {\r",
+							"            \"Content-Type\": \"application/json\"\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                \"email\": `${pm.collectionVariables.get(\"id\")}${pm.collectionVariables.get(\"userNum\")}`,\r",
+							"                \"password\": `${pm.collectionVariables.get(\"pw\")}${pm.collectionVariables.get(\"userNum\")}`\r",
+							"            })\r",
+							"        }\r",
+							"    }, (err, res) => {\r",
+							"        if (err) {\r",
+							"            console.log(err)\r",
+							"        } else {\r",
+							"            console.log(res)                        \r",
+							"\r",
+							"            var body = JSON.parse(res.stream)\r",
+							"            console.log(body.token)\r",
+							"\r",
+							"            pm.collectionVariables.set(\"token\",body.token)\r",
+							"            pm.collectionVariables.set(\"userObjId\",body.user.id)\r",
+							"            //pm.collectionVariables.set(\"cookie\", res.headers.get(\"Set-Cookie\"))\r",
+							"            console.log(\"signin success\")\r",
+							"        }\r",
+							"\r",
+							"    })\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"title\" : \"title{{titleNum}}\",\r\n    \"category\" : \"wecode\",\r\n    \"content\" : \"content{{mainNum}}\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/posts/write",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"posts",
+						"write"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get articles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "{{cookie}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/posts/block/0",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"posts",
+						"block",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "testID"
+		},
+		{
+			"key": "pw",
+			"value": "testPW"
+		},
+		{
+			"key": "titleNum",
+			"value": "001"
+		},
+		{
+			"key": "headNum",
+			"value": "01"
+		},
+		{
+			"key": "mainNum",
+			"value": "001"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "host",
+			"value": "34.64.95.44"
+		},
+		{
+			"key": "port",
+			"value": "5000"
+		},
+		{
+			"key": "userNum",
+			"value": "0"
+		},
+		{
+			"key": "userObjId",
+			"value": ""
+		}
+	]
+}
