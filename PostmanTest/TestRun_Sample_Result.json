@@ -1,0 +1,1059 @@
+{
+	"id": "f674535e-ef08-4b93-9499-77fec62db391",
+	"name": "put new post on board",
+	"timestamp": "2021-11-02T23:57:54.603Z",
+	"collection_id": "10283179-754c144d-6b8a-4220-aa6c-9005aef7bddc",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 100,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e0252249-7add-491c-9a6b-27896ce37808",
+			"name": "post article",
+			"time": 195,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"article239": true
+			},
+			"testPassFailCounts": {
+				"article140": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article141": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article142": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article143": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article144": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article145": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article146": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article147": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article148": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article149": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article150": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article151": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article152": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article153": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article154": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article155": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article156": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article157": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article158": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article159": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article160": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article161": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article162": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article163": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article164": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article165": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article166": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article167": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article168": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article169": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article170": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article171": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article172": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article173": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article174": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article175": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article176": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article177": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article178": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article179": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article180": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article181": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article182": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article183": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article184": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article185": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article186": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article187": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article188": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article189": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article190": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article191": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article192": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article193": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article194": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article195": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article196": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article197": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article198": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article199": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article202": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article203": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article204": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article205": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article206": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article207": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article208": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article209": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article210": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article211": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article212": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article213": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article214": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article215": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article216": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article217": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article218": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article219": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article220": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article221": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article222": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article223": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article224": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article225": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article226": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article227": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article228": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article229": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article230": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article231": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article232": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article233": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article234": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article235": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article236": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article237": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article238": {
+					"pass": 1,
+					"fail": 0
+				},
+				"article239": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				198,
+				197,
+				196,
+				199,
+				213,
+				201,
+				195,
+				196,
+				195,
+				196,
+				196,
+				196,
+				197,
+				200,
+				195,
+				196,
+				196,
+				197,
+				195,
+				198,
+				196,
+				196,
+				195,
+				196,
+				196,
+				195,
+				196,
+				204,
+				198,
+				195,
+				198,
+				195,
+				197,
+				195,
+				198,
+				197,
+				196,
+				196,
+				198,
+				197,
+				196,
+				196,
+				196,
+				196,
+				196,
+				196,
+				195,
+				197,
+				196,
+				196,
+				196,
+				195,
+				196,
+				198,
+				195,
+				196,
+				199,
+				199,
+				196,
+				196,
+				196,
+				200,
+				195,
+				197,
+				196,
+				196,
+				197,
+				196,
+				195,
+				197,
+				202,
+				195,
+				196,
+				201,
+				198,
+				198,
+				238,
+				196,
+				237,
+				197,
+				199,
+				198,
+				196,
+				219,
+				197,
+				195,
+				196,
+				199,
+				197,
+				197,
+				197,
+				198,
+				195,
+				196,
+				197,
+				194,
+				195,
+				196,
+				196,
+				195
+			],
+			"allTests": [
+				{
+					"article140": true
+				},
+				{
+					"article141": true
+				},
+				{
+					"article142": true
+				},
+				{
+					"article143": true
+				},
+				{
+					"article144": true
+				},
+				{
+					"article145": true
+				},
+				{
+					"article146": true
+				},
+				{
+					"article147": true
+				},
+				{
+					"article148": true
+				},
+				{
+					"article149": true
+				},
+				{
+					"article150": true
+				},
+				{
+					"article151": true
+				},
+				{
+					"article152": true
+				},
+				{
+					"article153": true
+				},
+				{
+					"article154": true
+				},
+				{
+					"article155": true
+				},
+				{
+					"article156": true
+				},
+				{
+					"article157": true
+				},
+				{
+					"article158": true
+				},
+				{
+					"article159": true
+				},
+				{
+					"article160": true
+				},
+				{
+					"article161": true
+				},
+				{
+					"article162": true
+				},
+				{
+					"article163": true
+				},
+				{
+					"article164": true
+				},
+				{
+					"article165": true
+				},
+				{
+					"article166": true
+				},
+				{
+					"article167": true
+				},
+				{
+					"article168": true
+				},
+				{
+					"article169": true
+				},
+				{
+					"article170": true
+				},
+				{
+					"article171": true
+				},
+				{
+					"article172": true
+				},
+				{
+					"article173": true
+				},
+				{
+					"article174": true
+				},
+				{
+					"article175": true
+				},
+				{
+					"article176": true
+				},
+				{
+					"article177": true
+				},
+				{
+					"article178": true
+				},
+				{
+					"article179": true
+				},
+				{
+					"article180": true
+				},
+				{
+					"article181": true
+				},
+				{
+					"article182": true
+				},
+				{
+					"article183": true
+				},
+				{
+					"article184": true
+				},
+				{
+					"article185": true
+				},
+				{
+					"article186": true
+				},
+				{
+					"article187": true
+				},
+				{
+					"article188": true
+				},
+				{
+					"article189": true
+				},
+				{
+					"article190": true
+				},
+				{
+					"article191": true
+				},
+				{
+					"article192": true
+				},
+				{
+					"article193": true
+				},
+				{
+					"article194": true
+				},
+				{
+					"article195": true
+				},
+				{
+					"article196": true
+				},
+				{
+					"article197": true
+				},
+				{
+					"article198": true
+				},
+				{
+					"article199": true
+				},
+				{
+					"article200": true
+				},
+				{
+					"article201": true
+				},
+				{
+					"article202": true
+				},
+				{
+					"article203": true
+				},
+				{
+					"article204": true
+				},
+				{
+					"article205": true
+				},
+				{
+					"article206": true
+				},
+				{
+					"article207": true
+				},
+				{
+					"article208": true
+				},
+				{
+					"article209": true
+				},
+				{
+					"article210": true
+				},
+				{
+					"article211": true
+				},
+				{
+					"article212": true
+				},
+				{
+					"article213": true
+				},
+				{
+					"article214": true
+				},
+				{
+					"article215": true
+				},
+				{
+					"article216": true
+				},
+				{
+					"article217": true
+				},
+				{
+					"article218": true
+				},
+				{
+					"article219": true
+				},
+				{
+					"article220": true
+				},
+				{
+					"article221": true
+				},
+				{
+					"article222": true
+				},
+				{
+					"article223": true
+				},
+				{
+					"article224": true
+				},
+				{
+					"article225": true
+				},
+				{
+					"article226": true
+				},
+				{
+					"article227": true
+				},
+				{
+					"article228": true
+				},
+				{
+					"article229": true
+				},
+				{
+					"article230": true
+				},
+				{
+					"article231": true
+				},
+				{
+					"article232": true
+				},
+				{
+					"article233": true
+				},
+				{
+					"article234": true
+				},
+				{
+					"article235": true
+				},
+				{
+					"article236": true
+				},
+				{
+					"article237": true
+				},
+				{
+					"article238": true
+				},
+				{
+					"article239": true
+				}
+			]
+		},
+		{
+			"id": "9aef67d3-84aa-494c-b5c5-97a5df8176e0",
+			"name": "get articles",
+			"time": 196,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				195,
+				194,
+				194,
+				194,
+				195,
+				194,
+				195,
+				196,
+				194,
+				193,
+				195,
+				195,
+				193,
+				194,
+				194,
+				193,
+				193,
+				193,
+				193,
+				194,
+				193,
+				204,
+				193,
+				194,
+				193,
+				195,
+				194,
+				195,
+				196,
+				194,
+				198,
+				196,
+				195,
+				193,
+				193,
+				193,
+				194,
+				194,
+				193,
+				193,
+				196,
+				193,
+				194,
+				193,
+				194,
+				194,
+				193,
+				194,
+				195,
+				193,
+				194,
+				193,
+				193,
+				193,
+				193,
+				194,
+				193,
+				194,
+				194,
+				194,
+				193,
+				194,
+				193,
+				193,
+				193,
+				195,
+				193,
+				198,
+				193,
+				194,
+				195,
+				195,
+				196,
+				195,
+				213,
+				195,
+				214,
+				193,
+				196,
+				193,
+				207,
+				194,
+				194,
+				193,
+				195,
+				193,
+				194,
+				193,
+				194,
+				194,
+				197,
+				193,
+				193,
+				194,
+				193,
+				193,
+				193,
+				196,
+				193,
+				196
+			],
+			"allTests": [
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{}
+			]
+		}
+	],
+	"count": 100,
+	"totalTime": 39251,
+	"collection": {
+		"requests": [
+			{
+				"id": "e0252249-7add-491c-9a6b-27896ce37808",
+				"method": "POST"
+			},
+			{
+				"id": "9aef67d3-84aa-494c-b5c5-97a5df8176e0",
+				"method": "GET"
+			}
+		]
+	}
+}
