@@ -42,11 +42,11 @@
 |                       **팀장 어유선**                        |                       **팀원 김현길**                        |                       **팀원 이동훈**                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/32833404?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/48472537?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/68373235?v=4" height=200 width=200> |
-| **blog**: [Makkiato](makkiato.tistory.com) </br> **github**: [Makkiato](https://github.com/Makkiato) | **blog**: [gusrlf14](https://velog.io/@gusrlf14) </br> **github**: [hyunghilkim](https://github.com/hyunghilkim) | **blog**: [dongjay00.log](https://velog.io/@dongjay00) </br> **github**: [dongjay00](https://github.com/dongjay00) |
+| **blog**: [Makkiato](https://makkiato.tistory.com) </br> **github**: [Makkiato](https://github.com/Makkiato) | **blog**: [gusrlf14](https://velog.io/@gusrlf14) </br> **github**: [hyunghilkim](https://github.com/hyunghilkim) | **blog**: [dongjay00.log](https://velog.io/@dongjay00) </br> **github**: [dongjay00](https://github.com/dongjay00) |
 | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) |
 |                        개발 환경 설정                        |                        개발 환경 설정                        |                        개발 환경 설정                        |
 |                     테크리더, QA, devops                     |                             API                              |                              DB                              |
-|                      [프로젝트 회고](https://makkiato.tistory.com)                       |                      [프로젝트 회고]()                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
+|                      [프로젝트 회고](https://makkiato.tistory.com/2)                       |                      [프로젝트 회고]()                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
 
 </div>
 
