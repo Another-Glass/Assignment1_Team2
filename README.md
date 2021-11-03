@@ -46,7 +46,7 @@
 | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) |
 |                        개발 환경 설정                        |                        개발 환경 설정                        |                        개발 환경 설정                        |
 |                     테크리더, QA, devops                     |                             API                              |                              DB                              |
-|                      [프로젝트 회고]()                       |                      [프로젝트 회고]()                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
+|                      [프로젝트 회고](makkiato.tistory.com)                       |                      [프로젝트 회고]()                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
 
 </div>
 
