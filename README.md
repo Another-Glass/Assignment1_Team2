@@ -46,7 +46,7 @@
 | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) | ![sprint1](https://img.shields.io/badge/wanted-sprint1-orange) |
 |                        개발 환경 설정                        |                        개발 환경 설정                        |                        개발 환경 설정                        |
 |                     테크리더, QA, devops                     |                             API                              |                              DB                              |
-|                      [프로젝트 회고](https://makkiato.tistory.com/2)                       |                      [프로젝트 회고]()                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
+|                      [프로젝트 회고](https://makkiato.tistory.com/2)                       |                      [프로젝트 회고](https://velog.io/@gusrlf14/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-1%ED%9A%8C%EC%B0%A8-%EA%B3%BC%EC%A0%9C)                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
 
 </div>
 
@@ -144,49 +144,29 @@
 ```
 
 📦src
- ┣ 📂bin
- ┃ ┗ www
- ┣ 📂config
- ┃ ┣ db.js
- ┃ ┗ secretKey.js
- ┣ 📂controllers
- ┃ ┣ postController.js
- ┃ ┗ userController.js
- ┣ 📂global
- ┃ ┗ routes.js
- ┣ 📂lib
- ┃ ┣ encryption.js
- ┃ ┗ jwt.js
- ┣ 📂middlewares
+ ┣ 📂functions
+ ┃ ┣ auth.js
+ ┃ ┣ board.js
+ ┃ ┗ comment.js
+ ┣ 📂middleware
  ┃ ┗ auth.js
  ┣ 📂models
- ┃ ┣ postModel.js
- ┃ ┗ userModel.js
+ ┃ ┣ Board.js
+ ┃ ┣ Comment.js
+ ┃ ┣ Count.js
+ ┃ ┗ User.js
+ ┣ 📂PostmanTest
+ ┃ ┣ TestRun_Collection_Sample.json
+ ┃ ┗ TestRun_Sample_Result.json
  ┣ 📂routes
- ┃ ┣ globalRouter.js
- ┃ ┣ postRouter.js
- ┃ ┗ userRouter.js
- ┣ 📂service
- ┃ ┣ postService.js
- ┃ ┗ userService.js
- ┣ 📂utils
- ┃ ┣ 📂db
- ┃ ┃ ┣ auto-id-setter.js
- ┃ ┃ ┗ index.js
- ┃ ┣ responseMessage.js
- ┃ ┣ statusCode.js
- ┃ ┗ util.js
- ┣ 📂views
- ┃ ┣ error.jade
- ┃ ┣ index.jade
- ┃ ┗ layout.jade
- ┣ .babelrc
- ┣ .env
- ┣ .eslintrc.json
+ ┃ ┣ auth.js
+ ┃ ┣ comment.js
+ ┃ ┗ post.js 
  ┣ .gitignore
- ┣ .prettierrc.json
+ ┣ README.md
  ┣ app.js
  ┣ package-lock.json
- ┗ package.json
+ ┣ package.json
+ ┗ server.js
 
 ```
